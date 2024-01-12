@@ -21,6 +21,18 @@ export default {
                 src = `https://flagsapi.com/DK/shiny/24.png`;
                 return src;
             }
+            if (language == 'ko') {
+                src = `https://flagsapi.com/KR/shiny/24.png`;
+                return src;
+            }
+            if (language == 'zh') {
+                src = `https://flagsapi.com/CN/shiny/24.png`;
+                return src;
+            }
+            if (language == 'hi') {
+                src = `https://flagsapi.com/ID/shiny/24.png`;
+                return src;
+            }
             src = `https://flagsapi.com/${language.toUpperCase()}/shiny/24.png`;
             return src;
         }

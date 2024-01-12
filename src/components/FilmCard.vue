@@ -21,6 +21,19 @@ export default {
                 src = `https://flagsapi.com/DK/shiny/24.png`;
                 return src;
             }
+            if (language == 'ko') {
+                src = `https://flagsapi.com/KR/shiny/24.png`;
+                return src;
+            }
+            if (language == 'zh') {
+                src = `https://flagsapi.com/CN/shiny/24.png`;
+                return src;
+            }
+            if (language == 'hi') {
+                src = `https://flagsapi.com/ID/shiny/24.png`;
+                return src;
+            }
+
             src = `https://flagsapi.com/${language.toUpperCase()}/shiny/24.png`;
             return src;
         }
@@ -28,7 +41,7 @@ export default {
 }
 </script>
 <template lang="">
-    <div class="cards col-4">
+    <div class="cards">
         <h5 class="title">{{card.title}}</h5>
         <h6 class="original_title">Titolo originale: {{card.original_title}}</h6>
         <div class="language">
