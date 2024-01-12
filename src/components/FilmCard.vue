@@ -1,7 +1,7 @@
 <script>
 
 export default {
-    name: 'SingleCard',
+    name: 'FilmCard',
     props: {
         card: Object
     },
@@ -29,7 +29,7 @@ export default {
 </script>
 <template lang="">
     <div class="cards col-4">
-        <h5 class="film_title">{{card.title}}</h5>
+        <h5 class="title">{{card.title}}</h5>
         <h6 class="original_title">Titolo originale: {{card.original_title}}</h6>
         <div class="language">
             Lingua:

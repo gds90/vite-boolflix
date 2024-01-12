@@ -16,32 +16,41 @@ export default {
   },
   methods: {
     // chiamata API film
-    getFilmsList() {
+    getCardsList() {
 
       if (store.search !== '') {
-        let apiUrl = this.store.searchFilm;
-        apiUrl += `${this.store.apiKey}&query=${this.store.search}`;
+        // CHIAMATA API FILM
+        let apiFilmUrl = this.store.searchFilm;
+        apiFilmUrl += `${this.store.apiKey}&query=${this.store.search}`;
 
-        axios.get(apiUrl).then((response) => {
+        axios.get(apiFilmUrl).then((response) => {
           this.store.filmsArray = response.data.results
+        });
+
+        // CHIAMATA API SERIES
+        let apiSeriesUrl = this.store.searchSerie;
+
+        apiSeriesUrl += `${this.store.apiKey}&query=${this.store.search}`;
+
+        axios.get(apiSeriesUrl).then((response) => {
+          this.store.seriesArray = response.data.results
         });
 
         this.store.search = '';
 
       }
       else {
-        alert("Campo ricerca vuoto");
+        alert("Campo di ricerca vuoto");
       }
     }
   },
   created() {
-    this.getFilmsList;
   }
 }
 </script>
 <template lang="">
   <div>
-    <AppHeader @perform_search="getFilmsList" />
+    <AppHeader @perform_search="getCardsList" />
     <main>
       <CardsContainer />
     </main>
