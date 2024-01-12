@@ -25,6 +25,8 @@ export default {
           this.store.filmsArray = response.data.results
         });
 
+        this.store.search = '';
+
       }
       else {
         alert("Campo ricerca vuoto");
@@ -39,15 +41,11 @@ export default {
 <template lang="">
   <div>
     <AppHeader @perform_search="getFilmsList" />
-    <main class="bg-secondary">
+    <main>
       <CardsContainer />
     </main>
   </div>
 </template>
 <style lang="scss">
 @use './styles/generals.scss' as *;
-
-main {
-  height: 100vh;
-}
 </style>

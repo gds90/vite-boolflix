@@ -17,7 +17,7 @@ export default {
                     <h1>{{store.app_title}}</h1>
                 </div>
                 <div class="col-6 my-2 d-flex justify-content-end ">
-                    <input id="search" type="text" class="form-select" placeholder="Cerca.." v-model="this.store.search">
+                    <input id="search" type="text" class="form-select" placeholder="Cerca.." v-model="this.store.search" @keyup.enter="$emit('perform_search')">
                     <button class="btn btn-danger ms-2" @click="$emit('perform_search')">Cerca</button>
                 </div>
             </div>
