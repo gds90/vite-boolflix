@@ -15,6 +15,7 @@ export default {
     CardsContainer
   },
   methods: {
+    // chiamata API film
     getFilmsList() {
 
       if (store.search !== '') {

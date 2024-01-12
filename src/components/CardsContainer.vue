@@ -16,9 +16,7 @@ export default {
 <template lang="">
     <div class="container">
         <div class="row">
-            
             <SingleCard v-for="card, index in store.filmsArray" :key="index" :card="card"/>
-            
         </div>
         
     </div>
