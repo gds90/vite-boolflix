@@ -15,7 +15,6 @@ export default {
     CardsContainer
   },
   methods: {
-    // chiamata API film
     getCardsList() {
 
       if (store.search !== '') {
@@ -50,7 +49,7 @@ export default {
 </script>
 <template lang="">
   <div>
-    <AppHeader @perform_search="getCardsList" />
+    <AppHeader @perform_search="getCardsList" /> <!-- $emit per button e per keyup.enter -->
     <main>
       <CardsContainer />
     </main>
