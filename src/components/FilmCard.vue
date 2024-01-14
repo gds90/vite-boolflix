@@ -68,7 +68,18 @@ export default {
             Lingua:
             <img class="flag" :src="flag(card.original_language)" :alt="card.original_language">
         </div>
-        <div class="vote">Voto: {{getStarsRate}}</div>
+        <div class="vote mt-1">
+            Voto: 
+            <!-- Stelle piene -->
+            <span v-for="index in getStarsRate" :key="index">
+                <i class="fas fa-star"></i>
+            </span>
+            <!-- Stelle vuote -->
+            <span v-for="index in 5 - getStarsRate" :key="index">
+                <i class="far fa-star"></i>
+            </span>
+        </div>
+
     </div>
 </template>
 <style lang="scss" scoped>
