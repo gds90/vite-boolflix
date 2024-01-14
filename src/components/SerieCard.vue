@@ -6,6 +6,7 @@ export default {
         card: Object
     },
     methods: {
+        // gestione bandiere lingua
         flag(language) {
             let src = '';
 
@@ -36,17 +37,24 @@ export default {
             src = `https://flagsapi.com/${language.toUpperCase()}/shiny/24.png`;
             return src;
         },
+        // metodo per recuperare l'url corretto del poster
         getPosterUrl(path) {
-            let src = '';
+
 
             if (path !== null) {
-                return src = 'https://image.tmdb.org/t/p/w500' + path;
+                return 'https://image.tmdb.org/t/p/w500' + path;
             }
             else {
-                return src = 'https://idaid.com/wp-content/themes/semplice/images/no_thumb.png';
+                return 'https://idaid.com/wp-content/themes/semplice/images/no_thumb.png';
             }
         }
     },
+    computed: {
+        getStarsRate() {
+            let starsRate = Math.round(this.card.vote_average / 2)
+            return starsRate
+        }
+    }
 }
 </script>
 <template lang="">
@@ -60,7 +68,7 @@ export default {
             Lingua:
             <img class="flag" :src="flag(card.original_language)" :alt="card.original_language">
         </div>
-        <div class="vote">Voto: {{card.vote_average}}</div>
+        <div class="vote">Voto: {{getStarsRate}}</div>
     </div>
 </template>
 <style lang="scss" scoped>
