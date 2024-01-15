@@ -8,6 +8,8 @@ export const store = reactive({
     apiKey: '?api_key=90b44e3da2719a7753a92b81c9a32639&language=it',
     filmsArray: [],
     seriesArray: [],
+    popularFilmsArray: [],
+    popularSeriesArray: [],
     search: '',
     loading: true
 })

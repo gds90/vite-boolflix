@@ -20,30 +20,55 @@ export default {
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h3 class="my-3 ms-3 fw-bold text-white" v-if="store.filmsArray.length > 0">Film</h3>
-                <div class="content d-flex">
-                    <FilmCard v-for="card, index in store.filmsArray" :key="index" :card="card"/>
+                <!-- Film del momento -->
+                <div class="popularFilms" v-if="this.store.popularFilmsArray.length > 0">
+                    <h3 class="my-3 ms-3 fw-bold text-white">Film del momento</h3>
+                    <div class="content d-flex">
+                        <FilmCard v-for="card, index in store.popularFilmsArray" :key="index" :card="card"/>
+                    </div>
+                </div>
+
+                <!-- ricerca film  -->
+                <div class="searchedFilms" v-if="store.filmsArray.length > 0">
+                    <h3 class="my-3 ms-3 fw-bold text-white">Film correlati alla ricerca "{{store.searched}}"</h3>
+                    <div class="content d-flex">
+                        <FilmCard v-for="card, index in store.filmsArray" :key="index" :card="card"/>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="row my-3">
             <div class="col-12">
-                <h3 class="my-3 ms-3 fw-bold text-white" v-if="store.seriesArray.length > 0">Serie Tv</h3>
-                <div class="content col-12 d-flex">
-                    <SerieCard v-for="card, index in store.seriesArray" :key="index" :card="card"/>
+                <!-- Serie tv del momento -->
+                <div class="popularSeries p-1" v-if="this.store.popularSeriesArray.length > 0">
+                    <h3 class="my-3 ms-3 fw-bold text-white">Serie Tv del momento</h3>
+                    <div class="content d-flex">
+                        <SerieCard v-for="card, index in store.popularSeriesArray" :key="index" :card="card"/>
+                    </div>
+                </div>
+
+                <!-- ricerca serie  -->
+                <div class="searchedFilms p-1" v-if="store.seriesArray.length > 0">
+                    <h3 class="my-3 ms-3 fw-bold text-white">Serie Tv correlate alla ricerca "{{store.searched}}"</h3>
+                    <div class="content d-flex">
+                        <SerieCard v-for="card, index in store.seriesArray" :key="index" :card="card"/>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </template>
 <style lang="scss" scoped>
+h3 {
+    text-transform: uppercase;
+}
+
 .content {
     overflow-x: auto;
     margin-left: 0;
     margin-right: 0;
-    height: 420px;
+    height: 430px;
     overflow-y: hidden;
-    //box-shadow: inset -10px 20px 20px 0px #000000
 }
 
 .container-fluid {

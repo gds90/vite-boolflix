@@ -16,6 +16,9 @@ export default {
   },
   methods: {
     getCardsList() {
+      // svuoto gli array dei film e delle serie popolari
+      this.store.popularFilmsArray = [];
+      this.store.popularSeriesArray = [];
 
       if (store.search !== '') {
         // CHIAMATA API FILM
@@ -35,15 +38,35 @@ export default {
           this.store.seriesArray = response.data.results
         });
 
+        this.store.searched = this.store.search
+        // svuoto il campo di ricerca
         this.store.search = '';
 
       }
       else {
         alert("Campo di ricerca vuoto");
       }
+    },
+    // metodo per recuperare i film e le serie popolari
+    getPopularFilmsAndSeries() {
+
+      let apiUrl = this.store.endpoint;
+      apiUrl += `/movie/popular${this.store.apiKey}`
+
+      axios.get(apiUrl).then((response) => {
+        this.store.popularFilmsArray = response.data.results
+      });
+
+      apiUrl = this.store.endpoint;
+      apiUrl += `/tv/popular${this.store.apiKey}`
+
+      axios.get(apiUrl).then((response) => {
+        this.store.popularSeriesArray = response.data.results
+      });
     }
   },
   created() {
+    this.getPopularFilmsAndSeries();
   }
 }
 </script>

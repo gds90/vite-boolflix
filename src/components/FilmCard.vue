@@ -107,6 +107,7 @@ export default {
     transition: transform 1s;
     height: 400px;
     margin: 0px 10px;
+
     box-shadow: 0px 20px 14px 2px #000000;
 
     .front,
@@ -148,6 +149,7 @@ export default {
     .posterContainer {
         img {
             width: 100%;
+            height: 100%;
         }
     }
 }

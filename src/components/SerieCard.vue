@@ -73,7 +73,7 @@ export default {
         <!-- back della carta -->
         <div class="back bg-black text-white text-center ">
             <h5 class="title fs-4">{{card.name}}</h5>
-            <h6 v-if="card.name !== card.original_name" class="original_title">Titolo originale: {{card.original_name}}</h6>
+            <h6 v-if="card.name !== card.original_name" class="original_title">Titolo originale: {{this.card.original_name}}</h6>
             <div class="language">
                 Lingua:
                 <img class="flag" :src="flag(card.original_language)" :alt="card.original_language">
@@ -149,7 +149,6 @@ export default {
         img {
             width: 100%;
             height: 100%;
-            object-fit: cover
         }
     }
 }
