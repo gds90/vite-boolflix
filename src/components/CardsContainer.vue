@@ -40,7 +40,7 @@ export default {
         <div class="row my-3">
             <div class="col-12">
                 <!-- Serie tv del momento -->
-                <div class="popularSeries p-1" v-if="this.store.popularSeriesArray.length > 0">
+                <div class="popularSeries" v-if="this.store.popularSeriesArray.length > 0">
                     <h3 class="my-3 ms-3 fw-bold text-white">Serie TV del momento</h3>
                     <div class="content d-flex">
                         <SerieCard v-for="card, index in store.popularSeriesArray" :key="index" :card="card"/>
@@ -48,7 +48,7 @@ export default {
                 </div>
 
                 <!-- ricerca serie  -->
-                <div class="searchedFilms p-1" v-if="store.seriesArray.length > 0">
+                <div class="searchedFilms" v-if="store.seriesArray.length > 0">
                     <h3 class="my-3 ms-3 fw-bold text-white">Serie TV correlate alla ricerca "{{store.searched}}"</h3>
                     <div class="content d-flex">
                         <SerieCard v-for="card, index in store.seriesArray" :key="index" :card="card"/>
@@ -72,6 +72,6 @@ h3 {
 }
 
 .container-fluid {
-    padding-top: 80px;
+    padding: 80px 0 0 0;
 }
 </style>

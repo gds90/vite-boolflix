@@ -120,6 +120,8 @@ export default {
     }
 
     .front {
+        box-shadow: 0 0 20px 5px black;
+
         img {
             width: 100%;
             height: 100%;
