@@ -82,7 +82,7 @@ export default {
                 Voto: 
                 <!-- Stelle piene -->
                 <span v-for="index in getStarsRate" :key="index">
-                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star goldStar"></i>
                 </span>
                 <!-- Stelle vuote -->
                 <span v-for="index in 5 - getStarsRate" :key="index">
@@ -128,6 +128,10 @@ export default {
         padding: 10px;
         height: 420px;
         overflow-y: auto;
+
+        .goldStar {
+            color: gold;
+        }
 
         .overview {
             font-size: 12px;
