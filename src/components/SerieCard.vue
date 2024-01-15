@@ -1,9 +1,14 @@
 <script>
 
 export default {
-    name: 'SerieCard',
+    name: 'FilmCard',
     props: {
         card: Object
+    },
+    data() {
+        return {
+            isFlipped: false
+        }
     },
     methods: {
         // gestione bandiere lingua
@@ -34,6 +39,7 @@ export default {
                 src = `https://flagsapi.com/ID/shiny/24.png`;
                 return src;
             }
+
             src = `https://flagsapi.com/${language.toUpperCase()}/shiny/24.png`;
             return src;
         },
@@ -44,7 +50,7 @@ export default {
                 return 'https://image.tmdb.org/t/p/w500' + path;
             }
             else {
-                return 'https://idaid.com/wp-content/themes/semplice/images/no_thumb.png';
+                return './src/assets/icon-image-not-found-free-vector.jpg';
             }
         }
     },
@@ -57,26 +63,37 @@ export default {
 }
 </script>
 <template lang="">
-    <div class="cards col-3">
-        <div class="posterContainer mb-2">
-            <img :src="getPosterUrl(card.poster_path)" :alt="card.title">
+    <div class="cards col-2" :class="isFlipped == true ? 'flipped' : '' " @mouseover="isFlipped = true" @mouseleave="isFlipped = false">
+        <!-- front della carta -->
+        <div class="front">
+            <div class="posterContainer mb-2">
+                <img :src="getPosterUrl(card.poster_path)" :alt="card.title">
+            </div>
         </div>
-        <h5 class="title">{{card.name}}</h5>
-        <h6 class="original_title">Titolo originale: {{card.original_name}}</h6>
-        <div class="language">
-            Lingua:
-            <img class="flag" :src="flag(card.original_language)" :alt="card.original_language">
-        </div>
-        <div class="vote mt-1">
-            Voto: 
-            <!-- Stelle piene -->
-            <span v-for="index in getStarsRate" :key="index">
-                <i class="fas fa-star"></i>
-            </span>
-            <!-- Stelle vuote -->
-            <span v-for="index in 5 - getStarsRate" :key="index">
-                <i class="far fa-star"></i>
-            </span>
+        <!-- back della carta -->
+        <div class="back bg-black text-white text-center ">
+            <h5 class="title">{{card.name}}</h5>
+            <h6 v-if="card.name !== card.original_name" class="original_title">Titolo originale: {{card.original_name}}</h6>
+            <div class="language">
+                Lingua:
+                <img class="flag" :src="flag(card.original_language)" :alt="card.original_language">
+            </div>
+            <div class="vote mt-1">
+                Voto: 
+                <!-- Stelle piene -->
+                <span v-for="index in getStarsRate" :key="index">
+                    <i class="fas fa-star"></i>
+                </span>
+                <!-- Stelle vuote -->
+                <span v-for="index in 5 - getStarsRate" :key="index">
+                    <i class="far fa-star"></i>
+                </span>
+            </div>
+            <div class="overview mt-2">
+                <p>
+                    {{card.overview}}
+                </p>
+            </div>
         </div>
     </div>
 </template>
@@ -84,15 +101,51 @@ export default {
 @use '../styles/generals.scss';
 
 .cards {
-    margin: 20px 0;
+    margin: 10px 5;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+    height: 400px;
+    margin: 0px 10px;
+    box-shadow: 0px 20px 14px 2px #000000;
+
+    .front,
+    .back {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        -webkit-backface-visibility: hidden;
+        /* Safari */
+        backface-visibility: hidden;
+        transform-style: preserve-3d;
+    }
+
+    .back {
+        transform: rotateY(180deg);
+        backface-visibility: hidden;
+        padding: 10px;
+        height: 420px;
+        overflow-y: auto;
+
+        .overview {
+            font-size: 12px;
+            text-align: left;
+        }
+    }
+
+    &:hover {
+        &.flipped {
+            transform: rotateY(-180deg);
+        }
+    }
 
     .posterContainer {
-        height: 500px;
-
         img {
             width: 100%;
             height: 100%;
-
+            object-fit: cover
         }
     }
 }
