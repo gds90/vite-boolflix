@@ -51,7 +51,7 @@ export default {
     },
     computed: {
         getStarsRate() {
-            let starsRate = Math.round(this.card.vote_average / 2)
+            let starsRate = Math.ceil(this.card.vote_average / 2)
             return starsRate
         }
     }
