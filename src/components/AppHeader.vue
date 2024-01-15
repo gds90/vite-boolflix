@@ -11,12 +11,14 @@ export default {
 </script>
 <template lang="">
     <header class="bg-black">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-6">
-                    <h1>{{store.app_title}}</h1>
+        <div class="container-fluid h-100">
+            <div class="row pt-2">
+                <div class="col-6 pt-1">
+                    <img id="logo" src="../assets/boolfix_logo.png" alt="">
                 </div>
-                <div class="col-6 my-2 d-flex justify-content-end ">
+
+                <!-- Button e campo input per la ricerca-->
+                <div class="col-6 my-2 d-flex justify-content-end">
                     <input id="search" type="text" class="form-select" placeholder="Cerca.." v-model="this.store.search" @keyup.enter="$emit('perform_search')">
                     <button class="btn btn-danger ms-2" @click="$emit('perform_search')">Cerca</button>
                 </div>
@@ -30,13 +32,13 @@ export default {
 header {
     height: 75px;
     margin: 0;
-}
 
-h1 {
-    color: $primary_color;
-}
+    img {
+        width: 150px;
+    }
 
-input {
-    width: 250px
+    input {
+        width: 250px
+    }
 }
 </style>
