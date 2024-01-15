@@ -17,7 +17,7 @@ export default {
                     <img id="logo" src="../assets/boolfix_logo.png" alt="">
                 </div>
                 <!-- Nav con link -->
-                <div class="col-7 pt-3">
+                <div class="col-7 pt-3 ps-5">
                     <nav>
                         <ul class="d-flex">
                             <li v-for="link, index in store.navLinks">
@@ -62,6 +62,12 @@ header {
 
     input {
         width: 250px
+    }
+}
+
+@media (max-width: 991px) {
+    nav {
+        display: none;
     }
 }
 </style>

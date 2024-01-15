@@ -63,7 +63,7 @@ export default {
 }
 </script>
 <template lang="">
-    <div class="cards col-2" :class="isFlipped == true ? 'flipped' : '' " @mouseover="isFlipped = true" @mouseleave="isFlipped = false">
+    <div class="cards col-12 col-sm-6 col-md-4 col-lg-2" :class="isFlipped == true ? 'flipped' : '' " @mouseover="isFlipped = true" @mouseleave="isFlipped = false">
         <!-- front della carta -->
         <div class="front">
             <div class="posterContainer mb-2">
@@ -107,8 +107,6 @@ export default {
     transition: transform 1s;
     height: 400px;
     margin: 0px 10px;
-
-    box-shadow: 0px 20px 14px 2px #000000;
 
     .front,
     .back {
