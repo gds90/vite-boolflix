@@ -41,7 +41,7 @@ export default {
             <div class="col-12">
                 <!-- Serie tv del momento -->
                 <div class="popularSeries p-1" v-if="this.store.popularSeriesArray.length > 0">
-                    <h3 class="my-3 ms-3 fw-bold text-white">Serie Tv del momento</h3>
+                    <h3 class="my-3 ms-3 fw-bold text-white">Serie TV del momento</h3>
                     <div class="content d-flex">
                         <SerieCard v-for="card, index in store.popularSeriesArray" :key="index" :card="card"/>
                     </div>
@@ -49,7 +49,7 @@ export default {
 
                 <!-- ricerca serie  -->
                 <div class="searchedFilms p-1" v-if="store.seriesArray.length > 0">
-                    <h3 class="my-3 ms-3 fw-bold text-white">Serie Tv correlate alla ricerca "{{store.searched}}"</h3>
+                    <h3 class="my-3 ms-3 fw-bold text-white">Serie TV correlate alla ricerca "{{store.searched}}"</h3>
                     <div class="content d-flex">
                         <SerieCard v-for="card, index in store.seriesArray" :key="index" :card="card"/>
                     </div>
@@ -67,7 +67,7 @@ h3 {
     overflow-x: auto;
     margin-left: 0;
     margin-right: 0;
-    height: 430px;
+    height: 500px;
     overflow-y: hidden;
 }
 

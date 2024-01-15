@@ -13,7 +13,7 @@ export default {
     <header class="bg-black">
         <div class="container-fluid h-100">
             <div class="row pt-2">
-                <div class="col-1 pt-1">
+                <div class="col-1 pt-1 ps-3">
                     <img id="logo" src="../assets/boolfix_logo.png" alt="">
                 </div>
                 <!-- Nav con link -->

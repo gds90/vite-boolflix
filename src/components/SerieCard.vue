@@ -47,7 +47,7 @@ export default {
         getPosterUrl(path) {
 
             if (path !== null) {
-                return 'https://image.tmdb.org/t/p/w500' + path;
+                return 'https://image.tmdb.org/t/p/w342' + path;
             }
             else {
                 return './src/assets/icon-image-not-found-free-vector.jpg';
@@ -66,14 +66,12 @@ export default {
     <div class="cards col-12 col-sm-6 col-md-4 col-lg-2" :class="isFlipped == true ? 'flipped' : '' " @mouseover="isFlipped = true" @mouseleave="isFlipped = false">
         <!-- front della carta -->
         <div class="front">
-            <div class="posterContainer mb-2">
-                <img :src="getPosterUrl(card.poster_path)" :alt="card.title">
-            </div>
+            <img :src="getPosterUrl(card.poster_path)" :alt="card.title" src="../assets/">
         </div>
         <!-- back della carta -->
         <div class="back bg-black text-white text-center ">
-            <h5 class="title fs-4">{{card.name}}</h5>
-            <h6 v-if="card.name !== card.original_name" class="original_title">Titolo originale: {{this.card.original_name}}</h6>
+            <h5 class="title fs-4 ">{{card.name}}</h5>
+            <h6 v-if="card.title !== card.original_name" class="original_title">Titolo originale: {{card.original_title}}</h6>
             <div class="language">
                 Lingua:
                 <img class="flag" :src="flag(card.original_language)" :alt="card.original_language">
@@ -105,8 +103,7 @@ export default {
     position: relative;
     transform-style: preserve-3d;
     transition: transform 1s;
-    height: 400px;
-    margin: 0px 10px;
+    min-width: 260px;
 
     .front,
     .back {
@@ -119,13 +116,22 @@ export default {
         /* Safari */
         backface-visibility: hidden;
         transform-style: preserve-3d;
+        border: 1px solid black;
+    }
+
+    .front {
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+        }
     }
 
     .back {
         transform: rotateY(180deg);
         backface-visibility: hidden;
         padding: 10px;
-        height: 420px;
         overflow-y: auto;
 
         .goldStar {
@@ -144,11 +150,6 @@ export default {
         }
     }
 
-    .posterContainer {
-        img {
-            width: 100%;
-            height: 100%;
-        }
-    }
+
 }
 </style>
