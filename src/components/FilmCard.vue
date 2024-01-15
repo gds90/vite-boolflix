@@ -72,7 +72,7 @@ export default {
         </div>
         <!-- back della carta -->
         <div class="back bg-black text-white text-center ">
-            <h5 class="title">{{card.title}}</h5>
+            <h5 class="title fs-4 ">{{card.title}}</h5>
             <h6 v-if="card.title !== card.original_title" class="original_title">Titolo originale: {{card.original_title}}</h6>
             <div class="language">
                 Lingua:

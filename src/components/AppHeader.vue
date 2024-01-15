@@ -31,7 +31,10 @@ export default {
 
 header {
     height: 75px;
+    width: 100%;
     margin: 0;
+    position: fixed;
+    z-index: 999;
 
     img {
         width: 150px;

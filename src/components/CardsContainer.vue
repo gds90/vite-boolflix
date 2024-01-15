@@ -17,7 +17,7 @@ export default {
 }
 </script>
 <template lang="">
-    <div class="container-fluid ">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-12">
                 <h3 class="my-3 ms-3 fw-bold text-white" v-if="store.filmsArray.length > 0">Film</h3>
@@ -46,8 +46,7 @@ export default {
     //box-shadow: inset -10px 20px 20px 0px #000000
 }
 
-.container {
-    margin-left: 0;
-    margin-right: 0;
+.container-fluid {
+    padding-top: 80px;
 }
 </style>
