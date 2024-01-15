@@ -17,10 +17,10 @@ export default {
   methods: {
     getCardsList() {
       // svuoto gli array dei film e delle serie popolari
-      this.store.popularFilmsArray = [];
-      this.store.popularSeriesArray = [];
 
       if (store.search !== '') {
+        this.store.popularFilmsArray = [];
+        this.store.popularSeriesArray = [];
         // CHIAMATA API FILM
         let apiFilmUrl = this.store.searchFilm;
         apiFilmUrl += `${this.store.apiKey}&query=${this.store.search}`;
@@ -44,7 +44,7 @@ export default {
 
       }
       else {
-        alert("Campo di ricerca vuoto");
+        this.showSearchMessage()
       }
     },
     // metodo per recuperare i film e le serie popolari
@@ -63,6 +63,14 @@ export default {
       axios.get(apiUrl).then((response) => {
         this.store.popularSeriesArray = response.data.results
       });
+    },
+    showSearchMessage() {
+      this.store.flagSearchMessage = true;
+
+      setTimeout(() => {
+        this.store.flagSearchMessage = false;
+
+      }, 2000);
     }
   },
   created() {

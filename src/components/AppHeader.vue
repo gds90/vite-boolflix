@@ -4,7 +4,8 @@ export default {
     name: 'AppHeader',
     data() {
         return {
-            store
+            store,
+
         }
     },
 }
@@ -30,6 +31,9 @@ export default {
                 <div class="col-4 my-2 d-flex justify-content-end">
                     <input id="search" type="text" class="form-select" placeholder="Cerca.." v-model="this.store.search" @keyup.enter="$emit('perform_search')">
                     <button class="btn btn-danger ms-2" @click="$emit('perform_search')">Cerca</button>
+                    <div class="temporary-message" :class="store.flagSearchMessage == true ? 'show' :''">
+                        Cosa vuoi guardare?
+                    </div>
                 </div>
             </div>
         </div>
@@ -58,6 +62,36 @@ header {
             margin-left: 20px;
             line-height: 1;
         }
+    }
+
+    .temporary-message {
+        position: absolute;
+        bottom: -45%;
+        right: 2%;
+        transform: translateX(-50%);
+        background-color: #fff;
+        color: black;
+        padding: 5px 10px;
+        border-radius: 5px;
+        opacity: 0;
+        transition: opacity 1s ease;
+    }
+
+    .temporary-message:before {
+        content: "";
+        width: 0px;
+        height: 0px;
+        position: absolute;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 20px solid white;
+        right: 50%;
+        top: -10px;
+        transform: translate(50%);
+    }
+
+    .temporary-message.show {
+        opacity: 1;
     }
 
     input {

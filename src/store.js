@@ -12,5 +12,6 @@ export const store = reactive({
     popularSeriesArray: [],
     search: '',
     navLinks: ['Home', 'Serie TV', 'Film', 'Nuovi e popolari', 'La mia lista'],
+    flagSearchMessage: false,
     loading: true
 })
