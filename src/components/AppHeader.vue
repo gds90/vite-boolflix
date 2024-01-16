@@ -14,7 +14,7 @@ export default {
             this.store.showSearch = !this.store.showSearch;
 
             setTimeout(() => {
-                this.store.showSearch = !this.store.showSearch;
+                this.store.showSearch = false;
             }, 10000);
         }
     },
@@ -40,10 +40,12 @@ export default {
                 <!-- Button e campo input per la ricerca-->
                 <div class="col-4 my-2 d-flex justify-content-end">
                     <i class="fas fa-search" @click="toggleSearch"></i>
-                    <div v-if="store.showSearch" class="searchItems">
-                        <input id="search" type="text" class="form-select" placeholder="Cerca.." v-model="store.search" @keyup.enter="$emit('perform_search')">
-                        <button class="btn btn-danger ms-2" @click="$emit('perform_search')" >Cerca</button>
-                    </div>
+                    <transition>
+                        <div v-if="store.showSearch" class="searchItems">
+                            <input id="search" type="text" class="form-select" placeholder="Cerca.." v-model="store.search" @keyup.enter="$emit('perform_search')">
+                            <button class="btn btn-danger ms-2" @click="$emit('perform_search')" >Cerca</button>
+                        </div>
+                    </transition>
                     <div class="temporary-message" :class="store.flagSearchMessage == true ? 'show' :''">
                         Cosa vuoi guardare?
                     </div>
@@ -111,11 +113,11 @@ header {
         cursor: pointer;
         color: #fff;
         font-size: 25px;
-        padding: 10px;
+        padding: 5px;
     }
 
     .searchItems {
-        position: relative;
+        position: absolute;
         display: flex;
         width: 300px;
     }
@@ -126,5 +128,15 @@ header {
             display: none;
         }
     }
+}
+
+.v-enter-active,
+.v-leave-active {
+    transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+    opacity: 0;
 }
 </style>
