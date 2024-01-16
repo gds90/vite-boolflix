@@ -30,11 +30,11 @@ export default {
 
         axios.get(apiFilmUrl).then((response) => {
           this.store.filmsArray = response.data.results
+
         });
 
         // CHIAMATA API SERIES
         let apiSeriesUrl = this.store.searchSerie;
-
         apiSeriesUrl += `${this.store.apiKey}&query=${this.store.search}`;
 
         axios.get(apiSeriesUrl).then((response) => {

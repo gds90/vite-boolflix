@@ -1,5 +1,6 @@
 <script>
-
+import { store } from '../store';
+import axios from 'axios';
 export default {
     name: 'FilmCard',
     props: {
@@ -7,6 +8,7 @@ export default {
     },
     data() {
         return {
+            store,
             isFlipped: false
         }
     },
@@ -52,6 +54,14 @@ export default {
             else {
                 return './src/assets/icon-image-not-found-free-vector.jpg';
             }
+        },
+        onHover(idFilm) {
+            this.isFlipped = true;
+
+            // CHIAMATA CAST FILM
+            axios.get(`${this.store.endpoint}/movie/${idFilm}/credits${this.store.apiKey}`).then((response) => {
+                this.card.cast = response.data.cast.slice(0, 5);
+            })
         }
     },
     computed: {
@@ -63,21 +73,21 @@ export default {
 }
 </script>
 <template lang="">
-    <div class="cards col-12 col-sm-6 col-md-4 col-lg-2" :class="isFlipped == true ? 'flipped' : '' " @mouseover="isFlipped = true" @mouseleave="isFlipped = false">
+    <div class="cards col-12 col-sm-6 col-md-4 col-lg-2" :class="isFlipped == true ? 'flipped' : '' " @mouseover="onHover(card.id)" @mouseleave="isFlipped = false">
         <!-- front della carta -->
         <div class="front">
             <img :src="getPosterUrl(card.poster_path)" :alt="card.title" src="../assets/">
         </div>
         <!-- back della carta -->
         <div class="back bg-black text-white text-center ">
-            <h5 class="title fs-4 ">{{card.title}}</h5>
-            <h6 v-if="card.title !== card.original_title" class="original_title">Titolo originale: {{card.original_title}}</h6>
+            <h5 class="title fs-4 "><b>{{card.title}}</b></h5>
+            <h6 v-if="card.title !== card.original_title" class="original_title"><b>Titolo originale: </b>{{card.original_title}}</h6>
             <div class="language">
-                Lingua originale:
+                <b>Lingua originale: </b>
                 <img class="flag" :src="flag(card.original_language)" :alt="card.original_language">
             </div>
             <div class="vote mt-1">
-                Voto: 
+                <b>Voto: </b>
                 <!-- Stelle piene -->
                 <span v-for="index in getStarsRate" :key="index">
                     <i class="fas fa-star goldStar"></i>
@@ -88,7 +98,8 @@ export default {
                 </span>
             </div>
             <div class="cast mt-1">
-                Cast:
+                <b>Cast: </b>
+                <span v-for="actor, index in card.cast" :key="index">{{actor.name}}{{index < card.cast.length - 1 ? ', ' : ''}}</span>
             </div>
             <div class="overview mt-2">
                 <p>

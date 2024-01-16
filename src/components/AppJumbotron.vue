@@ -7,17 +7,16 @@ export default {
             autoplayInterval: null,
             slides: [
                 {
-
+                    image: 'src/assets/jumbotron/one_piece.webp',
+                    title: 'One Piece'
+                },
+                {
                     image: 'src/assets/jumbotron/dark_netflix.jpg',
                     title: 'Dark'
                 },
                 {
                     image: 'src/assets/jumbotron/house_of_cards.jpg',
                     title: 'House of Cards'
-                },
-                {
-                    image: 'src/assets/jumbotron/one_piece.webp',
-                    title: 'One Piece'
                 },
                 {
                     image: 'src/assets/jumbotron/peaky_blinders.jpg',
