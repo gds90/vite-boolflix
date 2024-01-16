@@ -33,9 +33,6 @@ export default {
     mounted() {
         this.startAutoplay();
     },
-    beforeDestroy() {
-        this.stopAutoplay();
-    },
     methods: {
         startAutoplay() {
             this.autoplayInterval = setInterval(this.nextSlide, 5000);
@@ -48,9 +45,9 @@ export default {
 </script>
 <template lang="">
     <div class="jumbotron">
-        <Transition name="fade">
-            <img :src="slides[activeSlide].image" :alt="slides[activeSlide].title">
-        </Transition>
+        <TransitionGroup name="fade">
+            <img v-for="slide, index in slides" :key="index" v-show="index == activeSlide" :src="slide.image" :alt="slide.title">
+        </TransitionGroup>
     </div>
 </template>
 <style lang="scss" scoped>
@@ -68,16 +65,22 @@ export default {
         z-index: -2;
     }
 
+    // applico Transition Group Vue JS
+    .fade-move,
     .fade-enter-active,
     .fade-leave-active {
-        transition: opacity 1s ease;
+        transition: all 1s ease;
     }
 
     .fade-enter-from,
     .fade-leave-to {
         opacity: 0;
+        transform: translateX(30px);
     }
 
+    .fade-leave-active {
+        position: absolute;
+    }
 }
 
 .jumbotron::before {
