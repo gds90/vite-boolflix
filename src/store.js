@@ -13,5 +13,6 @@ export const store = reactive({
     search: '',
     navLinks: ['Home', 'Serie TV', 'Film', 'Nuovi e popolari', 'La mia lista'],
     flagSearchMessage: false,
+    showSearchInput: false,
     loading: true
 })

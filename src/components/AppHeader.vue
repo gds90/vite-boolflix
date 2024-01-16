@@ -1,11 +1,21 @@
 <script>
 import { store } from '../store';
+import 'vue';
 export default {
     name: 'AppHeader',
     data() {
         return {
             store,
+        }
+    },
+    methods: {
+        toggleSearch() {
+            // Mostra/nascondi il campo di input
+            this.store.showSearch = !this.store.showSearch;
 
+            setTimeout(() => {
+                this.store.showSearch = !this.store.showSearch;
+            }, 10000);
         }
     },
 }
@@ -29,8 +39,11 @@ export default {
                 </div>
                 <!-- Button e campo input per la ricerca-->
                 <div class="col-4 my-2 d-flex justify-content-end">
-                    <input id="search" type="text" class="form-select" placeholder="Cerca.." v-model="this.store.search" @keyup.enter="$emit('perform_search')">
-                    <button class="btn btn-danger ms-2" @click="$emit('perform_search')">Cerca</button>
+                    <i class="fas fa-search" @click="toggleSearch"></i>
+                    <div v-if="store.showSearch" class="searchItems">
+                        <input id="search" type="text" class="form-select" placeholder="Cerca.." v-model="store.search" @keyup.enter="$emit('perform_search')">
+                        <button class="btn btn-danger ms-2" @click="$emit('perform_search')" >Cerca</button>
+                    </div>
                     <div class="temporary-message" :class="store.flagSearchMessage == true ? 'show' :''">
                         Cosa vuoi guardare?
                     </div>
@@ -94,14 +107,24 @@ header {
         opacity: 1;
     }
 
-    input {
-        width: 250px
+    .fa-search {
+        cursor: pointer;
+        color: #fff;
+        font-size: 25px;
+        padding: 10px;
     }
-}
 
-@media (max-width: 991px) {
-    nav {
-        display: none;
+    .searchItems {
+        position: relative;
+        display: flex;
+        width: 300px;
+    }
+
+
+    @media (max-width: 991px) {
+        nav {
+            display: none;
+        }
     }
 }
 </style>
