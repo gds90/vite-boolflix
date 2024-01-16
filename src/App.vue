@@ -1,5 +1,6 @@
 <script>
 import AppHeader from './components/AppHeader.vue';
+import AppJumbotron from './components/AppJumbotron.vue';
 import CardsContainer from './components/CardsContainer.vue';
 import { store } from './store';
 import axios from 'axios';
@@ -12,15 +13,17 @@ export default {
   },
   components: {
     AppHeader,
+    AppJumbotron,
     CardsContainer
   },
   methods: {
     getCardsList() {
-      // svuoto gli array dei film e delle serie popolari
 
       if (store.search !== '') {
+        // svuoto gli array dei film e delle serie popolari
         this.store.popularFilmsArray = [];
         this.store.popularSeriesArray = [];
+
         // CHIAMATA API FILM
         let apiFilmUrl = this.store.searchFilm;
         apiFilmUrl += `${this.store.apiKey}&query=${this.store.search}`;
@@ -39,11 +42,12 @@ export default {
         });
 
         this.store.searched = this.store.search
+
         // svuoto il campo di ricerca
         this.store.search = '';
-
       }
       else {
+        // mostro un messaggio in caso di campo di ricerca vuoto
         this.showSearchMessage()
       }
     },
@@ -81,6 +85,7 @@ export default {
 <template lang="">
   <div>
     <AppHeader @perform_search="getCardsList" /> <!-- $emit per button e per keyup.enter -->
+    <AppJumbotron />
     <main>
       <CardsContainer />
     </main>

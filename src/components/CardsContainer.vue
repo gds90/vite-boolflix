@@ -72,6 +72,8 @@ h3 {
 }
 
 .container-fluid {
-    padding: 80px 0 0 0;
+    padding: 20px 0 0 0;
+    position: absolute;
+    top: 700px
 }
 </style>
