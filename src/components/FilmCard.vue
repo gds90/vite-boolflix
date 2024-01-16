@@ -73,7 +73,7 @@ export default {
             <h5 class="title fs-4 ">{{card.title}}</h5>
             <h6 v-if="card.title !== card.original_title" class="original_title">Titolo originale: {{card.original_title}}</h6>
             <div class="language">
-                Lingua:
+                Lingua originale:
                 <img class="flag" :src="flag(card.original_language)" :alt="card.original_language">
             </div>
             <div class="vote mt-1">
@@ -86,6 +86,9 @@ export default {
                 <span v-for="index in 5 - getStarsRate" :key="index">
                     <i class="far fa-star"></i>
                 </span>
+            </div>
+            <div class="cast mt-1">
+                Cast:
             </div>
             <div class="overview mt-2">
                 <p>

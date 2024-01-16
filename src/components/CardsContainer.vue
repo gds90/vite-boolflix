@@ -21,7 +21,7 @@ export default {
         <div class="row">
             <div class="col-12">
                 <!-- Film del momento -->
-                <div class="popularFilms" v-if="this.store.popularFilmsArray.length > 0">
+                <div class="popularFilms" v-if="store.popularFilmsArray.length > 0">
                     <h3 class="my-3 ms-3 fw-bold text-white">Film del momento</h3>
                     <div class="content d-flex">
                         <FilmCard v-for="card, index in store.popularFilmsArray" :key="index" :card="card"/>
@@ -40,7 +40,7 @@ export default {
         <div class="row my-3">
             <div class="col-12">
                 <!-- Serie tv del momento -->
-                <div class="popularSeries" v-if="this.store.popularSeriesArray.length > 0">
+                <div class="popularSeries" v-if="store.popularSeriesArray.length > 0">
                     <h3 class="my-3 ms-3 fw-bold text-white">Serie TV del momento</h3>
                     <div class="content d-flex">
                         <SerieCard v-for="card, index in store.popularSeriesArray" :key="index" :card="card"/>
