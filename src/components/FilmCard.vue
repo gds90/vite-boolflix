@@ -47,7 +47,7 @@ export default {
         getPosterUrl(path) {
 
             if (path !== null) {
-                return 'https://image.tmdb.org/t/p/w342' + path;
+                return 'https://image.tmdb.org/t/p/w500' + path;
             }
             else {
                 return './src/assets/icon-image-not-found-free-vector.jpg';
